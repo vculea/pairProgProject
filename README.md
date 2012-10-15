@@ -1,2 +1,2 @@
-pairProgProject
+PairProgSDL2012
 ===============
