@@ -3,7 +3,7 @@ package ro.sdl;
 import ro.sdl.service.PdfTableGeneratorService;
 
 /**
- * Hello world!
+ * Hello SDL world!
  */
 public class App {
     public static void main(String[] args) {
