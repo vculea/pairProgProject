@@ -1,2 +1,2 @@
-PairProgSDL2012 - Coolest team
+PairProgSDL2012
 ===============
