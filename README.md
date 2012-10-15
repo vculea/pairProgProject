@@ -1,2 +1,2 @@
-PairProgSDL2012 - October
+PairProgSDL2012 - October 2012
 ===============
