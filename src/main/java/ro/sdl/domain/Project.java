@@ -1,15 +1,26 @@
 package ro.sdl.domain;
 
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Project {
 
     public Project() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
+
     private String description;
     private List<User> users = new ArrayList<User>();
 

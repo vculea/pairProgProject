@@ -4,11 +4,8 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import ro.sdl.application.data.AppDataLoader;
 import ro.sdl.domain.Project;
-import ro.sdl.domain.User;
 import ro.sdl.dto.ProjectDetailedDistributionDTO;
-import ro.sdl.dto.ProjectDistributionDTO;
 import ro.sdl.repository.RepositoryException;
 
 import java.awt.*;
@@ -70,12 +67,12 @@ public class PdfTableGeneratorService {
             cell.setPadding(10.0f);
             table.addCell(cell);
 
-            for (User user : AppDataLoader.users) {
-                table.addCell(user.getName());
-                table.addCell(user.getRole().toString());
-                table.addCell(user.getState().toString());
-                table.addCell(user.getProject().getDescription());
-            }
+//            for (User user : AppDataLoader.users) {
+//                table.addCell(user.getName());
+//                table.addCell(user.getRole().toString());
+//                table.addCell(user.getState().toString());
+//                table.addCell(user.getProject().getDescription());
+//            }
             document.add(table);
             document.close();
         } catch (DocumentException e) {
@@ -105,45 +102,45 @@ public class PdfTableGeneratorService {
             cell1.setPadding(10.0f);
             table.addCell(cell1);
 
-            for (Project project : AppDataLoader.projects) {
-                PdfPCell cell = new PdfPCell(new Paragraph("Project: " + project.getDescription()));
-                cell.setColspan(4);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(128, 200, 100));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("Name"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("Role"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("State"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("Project"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                for (User user : project.getUsers()) {
-                    table.addCell(user.getName());
-                    table.addCell(user.getRole().toString());
-                    table.addCell(user.getState().toString());
-                    table.addCell(user.getProject().getDescription());
-                }
-            }
+//            for (Project project : AppDataLoader.projects) {
+//                PdfPCell cell = new PdfPCell(new Paragraph("Project: " + project.getDescription()));
+//                cell.setColspan(4);
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(128, 200, 100));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("Name"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("Role"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("State"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("Project"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                for (User user : project.getUsers()) {
+//                    table.addCell(user.getName());
+//                    table.addCell(user.getRole().toString());
+//                    table.addCell(user.getState().toString());
+//                    table.addCell(user.getProject().getDescription());
+//                }
+//            }
             document.add(table);
             document.close();
         } catch (DocumentException e) {
@@ -172,32 +169,32 @@ public class PdfTableGeneratorService {
             cell1.setPadding(10.0f);
             table.addCell(cell1);
 
-            for (Project project : AppDataLoader.projects) {
-                ProjectDistributionDTO dto = new ProjectServiceImpl().getProjectDistribution(project);
-
-                PdfPCell cell = new PdfPCell(new Paragraph("Project: " + project.getDescription()));
-                cell.setColspan(2);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(128, 200, 100));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("devPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("qaPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                table.addCell(Integer.toString(dto.getDevPercentage()));
-                table.addCell(Integer.toString(dto.getQaPercentage()));
-
-            }
+//            for (Project project : AppDataLoader.projects) {
+//                ProjectDistributionDTO dto = new ProjectServiceImpl().getProjectDistribution(project);
+//
+//                PdfPCell cell = new PdfPCell(new Paragraph("Project: " + project.getDescription()));
+//                cell.setColspan(2);
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(128, 200, 100));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("devPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("qaPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                table.addCell(Integer.toString(dto.getDevPercentage()));
+//                table.addCell(Integer.toString(dto.getQaPercentage()));
+//
+//            }
             document.add(table);
             document.close();
 
@@ -226,63 +223,63 @@ public class PdfTableGeneratorService {
             cell1.setPadding(10.0f);
             table.addCell(cell1);
 
-            for (Project project : AppDataLoader.projects) {
-                ProjectDetailedDistributionDTO dto = new ProjectServiceImpl().getProjectDetailedDistribution(project);
-
-                PdfPCell cell = new PdfPCell(new Paragraph("Project: " + project.getDescription()));
-                cell.setColspan(3);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(128, 200, 100));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("DevSeniorPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-
-                cell = new PdfPCell(new Paragraph("DevMidPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("DevJuniorPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                table.addCell(Integer.toString(dto.getProjectDevStateDistributionDTO().getSeniorPercentage()));
-                table.addCell(Integer.toString(dto.getProjectDevStateDistributionDTO().getMidPercentage()));
-                table.addCell(Integer.toString(dto.getProjectDevStateDistributionDTO().getJuniorPercentage()));
-
-                cell = new PdfPCell(new Paragraph("QaSeniorPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("QaMidPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Paragraph("QaJuniorPercentage"));
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new Color(255, 200, 0));
-                cell.setPadding(10.0f);
-                table.addCell(cell);
-
-                table.addCell(Integer.toString(dto.getProjectQaStateDistributionDTO().getSeniorPercentage()));
-                table.addCell(Integer.toString(dto.getProjectQaStateDistributionDTO().getMidPercentage()));
-                table.addCell(Integer.toString(dto.getProjectQaStateDistributionDTO().getJuniorPercentage()));
-
-
-            }
+//            for (Project project : AppDataLoader.projects) {
+//                ProjectDetailedDistributionDTO dto = new ProjectServiceImpl().getProjectDetailedDistribution(project);
+//
+//                PdfPCell cell = new PdfPCell(new Paragraph("Project: " + project.getDescription()));
+//                cell.setColspan(3);
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(128, 200, 100));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("DevSeniorPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//
+//                cell = new PdfPCell(new Paragraph("DevMidPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("DevJuniorPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                table.addCell(Integer.toString(dto.getProjectDevStateDistributionDTO().getSeniorPercentage()));
+//                table.addCell(Integer.toString(dto.getProjectDevStateDistributionDTO().getMidPercentage()));
+//                table.addCell(Integer.toString(dto.getProjectDevStateDistributionDTO().getJuniorPercentage()));
+//
+//                cell = new PdfPCell(new Paragraph("QaSeniorPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("QaMidPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                cell = new PdfPCell(new Paragraph("QaJuniorPercentage"));
+//                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//                cell.setBackgroundColor(new Color(255, 200, 0));
+//                cell.setPadding(10.0f);
+//                table.addCell(cell);
+//
+//                table.addCell(Integer.toString(dto.getProjectQaStateDistributionDTO().getSeniorPercentage()));
+//                table.addCell(Integer.toString(dto.getProjectQaStateDistributionDTO().getMidPercentage()));
+//                table.addCell(Integer.toString(dto.getProjectQaStateDistributionDTO().getJuniorPercentage()));
+//
+//
+//            }
             document.add(table);
             document.close();
 

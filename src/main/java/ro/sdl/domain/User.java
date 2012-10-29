@@ -1,8 +1,19 @@
 package ro.sdl.domain;
 
-public class User {
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
+
     private String name;
     private Role role;     // dev, qa
     private State state;  // jr, mid , senior

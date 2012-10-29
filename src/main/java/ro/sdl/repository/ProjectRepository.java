@@ -1,12 +1,15 @@
 package ro.sdl.repository;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import ro.sdl.domain.Project;
 import ro.sdl.domain.User;
 
 import java.util.Collection;
 import java.util.List;
 
-public interface ProjectRepository {
+@Repository
+public interface ProjectRepository extends CrudRepository<Project, Integer> {
 
     Project load(Integer projectId) throws RepositoryException;
 
@@ -16,7 +19,7 @@ public interface ProjectRepository {
 
     void update(Project project) throws RepositoryException;
 
-    void delete(Integer projectId) throws RepositoryException;
+    void delete(Integer projectId);
 
     public List<User> getProjectUsers(Project project);
 }

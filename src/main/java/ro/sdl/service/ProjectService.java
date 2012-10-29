@@ -6,7 +6,9 @@ import ro.sdl.dto.ProjectDetailedDistributionDTO;
 import ro.sdl.dto.ProjectDistributionDTO;
 import ro.sdl.repository.RepositoryException;
 
+import java.util.Collection;
 import java.util.List;
+
 
 public interface ProjectService {
 
@@ -23,4 +25,6 @@ public interface ProjectService {
     public List<Project> listProjectWithState(int value);
 
     public List<User> getProjectComposition(Project project);
+
+    public Collection<Project> getAllProjects() throws RepositoryException;
 }

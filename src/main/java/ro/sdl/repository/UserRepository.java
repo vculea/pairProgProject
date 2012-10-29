@@ -1,10 +1,13 @@
 package ro.sdl.repository;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import ro.sdl.domain.User;
 
 import java.util.Collection;
 
-public interface UserRepository {
+@Repository
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     User load(long userId) throws RepositoryException;
 

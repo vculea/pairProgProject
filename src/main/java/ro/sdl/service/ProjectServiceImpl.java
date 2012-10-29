@@ -1,7 +1,8 @@
 package ro.sdl.service;
 
 
-import ro.sdl.application.data.AppDataLoader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ro.sdl.domain.Project;
 import ro.sdl.domain.Role;
 import ro.sdl.domain.State;
@@ -9,15 +10,22 @@ import ro.sdl.domain.User;
 import ro.sdl.dto.ProjectDetailedDistributionDTO;
 import ro.sdl.dto.ProjectDistributionDTO;
 import ro.sdl.dto.ProjectStateDistributionDTO;
-import ro.sdl.repository.*;
+import ro.sdl.repository.ProjectRepository;
+import ro.sdl.repository.RepositoryException;
+import ro.sdl.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Service
 public class ProjectServiceImpl implements ProjectService {
-    ProjectRepository projectRepository = new ProjectRepositoryMemoryImpl();
-    UserRepository userRepository = new UserRepositoryMemoryImpl();
+
+    @Autowired
+    ProjectRepository projectRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     /**
      * @param project: the project
@@ -44,6 +52,14 @@ public class ProjectServiceImpl implements ProjectService {
      */
     public List<User> getProjectComposition(Project project) {
         return projectRepository.getProjectUsers(project);
+    }
+
+    @Override
+    public Collection<Project> getAllProjects() throws RepositoryException {
+        if (projectRepository == null) {
+            System.out.println("no autowired");
+        }
+        return projectRepository.getProjects();
     }
 
     /**
@@ -110,11 +126,11 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDetailedDistributionDTO getStructureDistribution() {
         ArrayList<User> users = new ArrayList<User>();
 
-        for (Project project : AppDataLoader.projects) {
-            for (User user : project.getUsers()) {
-                users.add(user);
-            }
-        }
+//        for (Project project : AppDataLoader.projects) {
+//            for (User user : project.getUsers()) {
+//                users.add(user);
+//            }
+//        }
         ProjectDetailedDistributionDTO projectDetailedDistributionDTO = getDetailedDistribution(users);
         return projectDetailedDistributionDTO;
     }
@@ -195,9 +211,7 @@ public class ProjectServiceImpl implements ProjectService {
         return projects;
     }
 
-    public List<Project> listProjectWithState
-            (
-                    int value) {
+    public List<Project> listProjectWithState(int value) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
