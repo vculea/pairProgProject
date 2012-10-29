@@ -15,8 +15,8 @@ public class User {
         this.state = state;
     }
 
-    public User(){
-    
+    public User() {
+
     }
 
     public User(Integer id, String name, Role role, State state, Project project) {

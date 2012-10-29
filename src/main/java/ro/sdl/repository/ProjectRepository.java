@@ -1,6 +1,7 @@
 package ro.sdl.repository;
 
-import ro.sdl.domain.*;
+import ro.sdl.domain.Project;
+import ro.sdl.domain.User;
 
 import java.util.Collection;
 import java.util.List;

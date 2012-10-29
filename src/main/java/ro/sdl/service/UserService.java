@@ -1,6 +1,7 @@
 package ro.sdl.service;
 
-import ro.sdl.domain.*;
+import ro.sdl.domain.Project;
+import ro.sdl.domain.User;
 
 public interface UserService {
 

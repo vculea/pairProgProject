@@ -118,6 +118,7 @@ public class ProjectServiceImpl implements ProjectService {
         ProjectDetailedDistributionDTO projectDetailedDistributionDTO = getDetailedDistribution(users);
         return projectDetailedDistributionDTO;
     }
+
     public ProjectDetailedDistributionDTO getProjectDetailedDistribution() throws RepositoryException {
         ProjectDetailedDistributionDTO projectDetailedDistributionDTO = getDetailedDistribution(userRepository.getUsers());
         return projectDetailedDistributionDTO;

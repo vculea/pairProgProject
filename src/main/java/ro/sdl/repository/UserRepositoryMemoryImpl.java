@@ -1,7 +1,7 @@
 package ro.sdl.repository;
 
 import ro.sdl.application.data.AppDataLoader;
-import ro.sdl.domain.*;
+import ro.sdl.domain.User;
 
 import java.util.Collection;
 

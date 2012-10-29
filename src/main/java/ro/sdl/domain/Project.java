@@ -27,7 +27,7 @@ public class Project {
     }
 
     public Project(Integer id, String description, List<User> users) {
-        this(id,description);
+        this(id, description);
         this.users = users;
     }
 

@@ -3,8 +3,8 @@ package ro.sdl.dto;
 
 public class ProjectDistributionDTO {
 
-       private int devPercentage;
-       private int qaPercentage;
+    private int devPercentage;
+    private int qaPercentage;
 
     public int getDevPercentage() {
         return devPercentage;
